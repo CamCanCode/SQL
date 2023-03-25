@@ -1,0 +1,40 @@
+/** Created a database of various models of Iphones displaying model name, colour, storage, price, stock amount)**/
+
+CREATE TABLE iphone_store (id INTEGER PRIMARY KEY, name TEXT, colour TEXT,storage TEXT, price INTEGER, stock INTEGER);
+
+INSERT INTO iphone_store VALUES (1, "IPHONE 8", "white","64gb", 7999, 3);
+
+INSERT INTO iphone_store VALUES (2, "IPHONE 11", "space grey","64gb", 14000, 22);
+
+INSERT INTO iphone_store VALUES (3, "IPHONE 11", "black", "128gb", 16000, 55);
+
+INSERT INTO iphone_store VALUES (4, "IPHONE 11 pro", "white", "64gb", 14500, 12);
+
+INSERT INTO iphone_store VALUES (5, "IPHONE 11 pro max", "white", "128gb", 15500, 1);
+
+INSERT INTO iphone_store VALUES (6, "IPHONE 11 pro", "green", "256gb", 18500, 8);
+
+INSERT INTO iphone_store VALUES (7, "IPHONE 11 pro max", "green", "512gb", 22500, 20);
+
+INSERT INTO iphone_store VALUES (8, "IPHONE 12", "white", "64gb", 13500, 64);
+
+INSERT INTO iphone_store VALUES (9, "IPHONE 12", "black", "64gb", 13500, 33);
+
+INSERT INTO iphone_store VALUES (10, "IPHONE 12 pro", "white", "64gb", 17500, 44);
+
+INSERT INTO iphone_store VALUES (11, "IPHONE 12 pro", "black", "64gb", 17500, 5);
+
+INSERT INTO iphone_store VALUES (12, "IPHONE 14", "white", "128gb", 19500, 21);
+
+INSERT INTO iphone_store VALUES (13, "IPHONE 14", "black", "128gb", 19500, 1);
+
+INSERT INTO iphone_store VALUES (14, "IPHONE 14 pro", "white", "128gb", 22500, 54);
+
+INSERT INTO iphone_store VALUES (15, "IPHONE 14 pro", "black", "128gb", 22500, 77);
+
+/** Table was ordered and displayed by price from low to high**/
+SELECT * FROM iphone_store
+ORDER BY price ASC;
+
+/** Total stock of all iphones available**/
+SELECT SUM(stock) FROM iphone_store; 
