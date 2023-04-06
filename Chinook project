@@ -1,0 +1,29 @@
+--QUERYING DATA FROM THE CHINOOK DATABASE WITH STATS 
+
+--Show Customers (their full names, customer ID, and country) who are not in the US.
+ 
+SELECT
+FirstName, LastName, CustomerID, Country
+FROM chinook.customers
+WHERE Country != 'USA';
+
+--Show only the Customers from USA.
+
+SELECT
+FirstName, LastName, CustomerID, Country
+FROM chinook.customers
+WHERE Country LIKE 'USA';
+
+--Show the Invoice details of customers who are from Brazil.
+
+SELECT
+cust.FirstName,cust.LastName,
+inv.InvoiceID, inv.InvoiceDate, 
+inv.BillingCountry
+FROM chinook.customers AS cust
+JOIN chinook.invoices AS inv
+ON cust.CustomerId = inv.CustomerId
+WHERE inv.BillingCountry = 'Brazil'
+ORDER BY inv.InvoiceDate ASC;
+
+
