@@ -32,3 +32,18 @@ SELECT
 FirstName, LastName, Title
 FROM chinook.employees
 WHERE Title LIKE 'Sales%Agent%';
+
+--Find a unique/distinct list of billing countries from the Invoice table.
+
+SELECT DISTINCT
+BillingCountry FROM chinook.invoices;
+
+--Provide a query that shows the invoices associated with each sales agent. 
+
+SELECT
+emp.LastName, emp.FirstName, inv.InvoiceId
+FROM chinook.employees AS emp
+JOIN chinook.customers cust 
+ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.invoices inv 
+ON inv.CustomerId = cust.CustomerId;
