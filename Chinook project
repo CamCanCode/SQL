@@ -26,4 +26,9 @@ ON cust.CustomerId = inv.CustomerId
 WHERE inv.BillingCountry = 'Brazil'
 ORDER BY inv.InvoiceDate ASC;
 
+--Show the Employees who are Sales Agents.
 
+SELECT
+FirstName, LastName, Title
+FROM chinook.employees
+WHERE Title LIKE 'Sales%Agent%';
