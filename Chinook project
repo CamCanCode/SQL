@@ -95,3 +95,24 @@ GROUP BY g.Name, t.Name
 ORDER BY g.Name, total_purchases DESC
 LIMIT 10;
 
+--Which artists have the highest number of tracks in the database, and what are their top-selling tracks?
+
+SELECT 
+a.Name AS artist_name, COUNT(*) AS num_tracks,
+t.Name AS track_name,
+SUM(ii.Quantity) AS total_purchases
+FROM chinook.artists a
+
+JOIN chinook.albums al
+ON al.ArtistId = a.ArtistId
+
+JOIN chinook.tracks t
+ON t.AlbumId = al.AlbumId
+
+JOIN chinook.invoice_items ii
+ON ii.TrackId = t.TrackId
+
+GROUP BY a.Name, t.Name
+ORDER BY num_tracks DESC, total_purchases DESC
+LIMIT 10;
+
