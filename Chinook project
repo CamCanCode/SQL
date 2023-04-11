@@ -78,4 +78,20 @@ ON inv.CustomerId = cust.CustomerId
 WHERE emp.Title = 'Sales Support Agent'
 GROUP BY emp.FirstName;
 
+--What are the top 10 most popular tracks by genre, as determined by the total number of times they have been purchased?
+
+SELECT
+g.Name AS genre_name, t.Name AS track_name,
+SUM(ii.Quantity) AS total_purchases
+FROM chinook.genres g
+
+JOIN chinook.tracks t
+ON t.GenreId = g.GenreId
+
+JOIN chinook.invoice_items ii
+ON ii.TrackId = t.TrackId
+
+GROUP BY g.Name, t.Name
+ORDER BY g.Name, total_purchases DESC
+LIMIT 10;
 
