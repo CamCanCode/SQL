@@ -53,3 +53,29 @@ ON inv.CustomerId = cust.CustomerId;
 SELECT COUNT(InvoiceId) AS total_invoices_09
 FROM chinook.invoices
 WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+--A query that includes the purchased track name with each invoice line ID.
+
+SELECT
+t.Name, i.InvoiceLineId
+FROM chinook.invoice_items i
+JOIN chinook.tracks t
+ON i.TrackId = t.TrackId;
+
+--total sales made by each sales agent.
+
+SELECT
+emp.FirstName, emp.LastName,
+ROUND(SUM(inv.Total), 2) AS Total_Sales
+FROM chinook.employees emp
+
+JOIN chinook.customers cust
+ON cust.SupportRepId = emp.EmployeeId
+
+JOIN chinook.invoices inv
+ON inv.CustomerId = cust.CustomerId
+
+WHERE emp.Title = 'Sales Support Agent'
+GROUP BY emp.FirstName;
+
+
